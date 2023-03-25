@@ -86,7 +86,7 @@ const post_home = async (req, res) => {
                     id: post._id,
                     user_id: post.user_id,
                     username: logUser.username,
-                    pic: logUser.pic || "../../src/assets/img/user-icon.png",
+                    pic: logUser.pic || "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png",
                     caption: post.caption,
                     attachment: post.attachment,
                     date: checkDate(post.createdAt),
@@ -122,7 +122,7 @@ const post_profile = async (req, res) => {
                     id: post._id,
                     user_id: post.user_id,
                     username: logUser.username,
-                    pic: logUser.pic || "../../src/assets/img/user-icon.png",
+                    pic: logUser.pic || "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png",
                     caption: post.caption,
                     attachment: post.attachment,
                     date: checkDate(post.createdAt),
@@ -190,7 +190,7 @@ const post_likers = async (req, res) => {
                     user_id: like.user_liked,
                     fname: logUser.fname,
                     username: logUser.username,
-                    pic: logUser.pic || "../../src/assets/img/user-icon.png",
+                    pic: logUser.pic || "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png",
                     btnFollow: btnFollow
                 }
                 allUsers.push(objUser)
@@ -222,7 +222,7 @@ const comment_add = async (req, res) => {
             const logUser = await User.findOne({_id: userId});
             const user = {
                 username: logUser.username,
-                pic: logUser.pic || "../../src/assets/img/user-icon.png"
+                pic: logUser.pic || "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
             }
             res.send({status: "success", message: "Comment has been posted", commentAdded, user});
         } else {
@@ -247,7 +247,7 @@ const comment_get = async (req, res) => {
                     comment_id: rowComment._id,
                     comment_user: rowComment.comment_user_id,
                     username: logUser.username,
-                    pic: logUser.pic || "../../src/assets/img/user-icon.png",
+                    pic: logUser.pic || "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png",
                     comment_to: rowComment.comment_to,
                     comment: rowComment.comment,
                     date: checkDate(rowComment.createdAt)

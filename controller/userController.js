@@ -20,7 +20,7 @@ const user_get = async (req, res) => {
                 user_id: user._id,
                 fname: user.fname,
                 username: user.username,
-                pic: user.pic || "../../src/assets/img/user-icon.png",
+                pic: user.pic || "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png",
                 btnFollow: btnFollow
             }
             allUsers.push(obj)
@@ -119,7 +119,7 @@ const user_home = async (req, res) => {
                 fname: logUser.fname,
                 username: logUser.username,
                 bio: logUser.bio,
-                pic: logUser.pic || "../../src/assets/img/user-icon.png"
+                pic: logUser.pic || "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
             }
             res.send({status: "success", message: "Hello user", user});
         } else {
@@ -143,7 +143,7 @@ const user_profile = async (req, res) => {
             const user = {
                 fname: logUser.fname,
                 username: logUser.username,
-                pic: logUser.pic || "../../src/assets/img/user-icon.png",
+                pic: logUser.pic || "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png",
                 bio: logUser.bio,
                 isOwner: isOwner
             }
@@ -221,7 +221,7 @@ const user_followers = async (req, res) => {
                     user_id: rowFollower.user_follower,
                     fname: logUser.fname,
                     username: logUser.username,
-                    pic: logUser.pic || "../../src/assets/img/user-icon.png",
+                    pic: logUser.pic || "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png",
                     btnFollow: btnFollow
                 }
                 followers.push(objPost)
@@ -254,7 +254,7 @@ const user_followings = async (req, res) => {
                     user_id: rowFollowing.user_followed,
                     fname: logUser.fname,
                     username: logUser.username,
-                    pic: logUser.pic || "../../src/assets/img/user-icon.png",
+                    pic: logUser.pic || "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png",
                     btnFollow: btnFollow
                 }
                 followings.push(objPost)
