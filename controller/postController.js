@@ -11,7 +11,6 @@ const post_add = async (req, res) => {
 	try {
         const userId = req.getUser.id;
         if(userId) {
-            const logUser = await User.findOne({_id: userId});
             const newPost = new Post({
                 user_id: userId,
                 caption: req.body.caption,
@@ -23,7 +22,7 @@ const post_add = async (req, res) => {
             res.send({status: "error", message: "No user"});
         }
 	} catch (error) {
-		res.status(400).send(error);
+		res.send({status: "error", message: "backend error"});
 		console.log(error);
 	}
 }
@@ -46,7 +45,7 @@ const post_edit = async (req, res) => {
             res.send({status: "error", message: "No user"});
         }
 	} catch (error) {
-		res.status(400).send(error);
+		res.send({status: "error", message: "backend error"});
 		console.log(error);
 	}
 }
@@ -62,7 +61,7 @@ const post_delete = async (req, res) => {
             res.send({status: "error", message: "No user"});
         }
 	} catch (error) {
-		res.status(400).send(error);
+		res.send({status: "error", message: "backend error"});
 		console.log(error);
 	}
 }
@@ -104,7 +103,7 @@ const post_home = async (req, res) => {
             res.send({status: "error", message: "No user"});
         }
     } catch (error) {
-        res.status(400).send(error);
+        res.send({status: "error", message: "backend error"});
 		console.log(error);
     }
 }
@@ -115,14 +114,14 @@ const post_profile = async (req, res) => {
         const profileId = req.body.id;
         if(userId) {
             const rawPosts = await Post.find({user_id: profileId}).sort({createdAt: -1});
+            const profileUser = await User.findOne({_id: profileId});
             const allPosts = [];
             for(let post of rawPosts) {
-                const logUser = await User.findOne({_id: post.user_id});
                 const objPost = {
                     id: post._id,
                     user_id: post.user_id,
-                    username: logUser.username,
-                    pic: logUser.pic || "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png",
+                    username: profileUser.username,
+                    pic: profileUser.pic || "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png",
                     caption: post.caption,
                     attachment: post.attachment,
                     date: checkDate(post.createdAt),

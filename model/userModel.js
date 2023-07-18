@@ -18,7 +18,7 @@ const userSchema = new Schema({
         type: String
     },
     bio: {
-        type: String,
+        type: String
     },
     gender: {
         type: String
@@ -38,5 +38,5 @@ const userSchema = new Schema({
     }
 }, {timestamps: true});
 
-const User = mongoose.model("users", userSchema);
+const User = mongoose.model("Users", userSchema);
 module.exports = User;

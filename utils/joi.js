@@ -9,11 +9,6 @@ const userValidation = joi.object({
     confirm_password: joi.ref('password')
 }).with('password', 'confirm_password');
 
-const loginValidation = joi.object({
-    email: joi.string().email().trim(true).required(),
-    password: joi.string().min(8).trim(true).required()
-});
-
 const isEmailExisting = async (inputEmail) => {
     const email = await User.findOne({email: inputEmail}); 
     if(email) {
@@ -32,7 +27,6 @@ const isUsernameExisting = async (inputUsername) => {
 
 module.exports = {
     userValidation,
-    loginValidation,
     isEmailExisting,
     isUsernameExisting
 }
